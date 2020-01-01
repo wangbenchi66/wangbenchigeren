@@ -1,0 +1,15 @@
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.csproj.CoreCompileInputs.cache
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\weatherDal.dll.config
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\weatherDal.dll
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\weatherDal.pdb
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\EntityFramework.dll
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\EntityFramework.SqlServer.dll
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\Newtonsoft.Json.dll
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\EntityFramework.xml
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\EntityFramework.SqlServer.xml
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\Newtonsoft.Json.xml
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.csproj.CopyComplete
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.dll
+E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.pdb

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather", "weather\weather.csproj", "{0CF9C4A0-11A5-4EAE-8D0D-B69C4D0E27AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weather.Tests", "weather.Tests\weather.Tests.csproj", "{7E9A5809-6A63-4573-8DC9-AF1A47C5ABED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weatherDal", "weatherDal\weatherDal.csproj", "{EF0906DD-EA0C-4CE1-9D1F-F8E35DEB049D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CF9C4A0-11A5-4EAE-8D0D-B69C4D0E27AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CF9C4A0-11A5-4EAE-8D0D-B69C4D0E27AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CF9C4A0-11A5-4EAE-8D0D-B69C4D0E27AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CF9C4A0-11A5-4EAE-8D0D-B69C4D0E27AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9A5809-6A63-4573-8DC9-AF1A47C5ABED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9A5809-6A63-4573-8DC9-AF1A47C5ABED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9A5809-6A63-4573-8DC9-AF1A47C5ABED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9A5809-6A63-4573-8DC9-AF1A47C5ABED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF0906DD-EA0C-4CE1-9D1F-F8E35DEB049D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF0906DD-EA0C-4CE1-9D1F-F8E35DEB049D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF0906DD-EA0C-4CE1-9D1F-F8E35DEB049D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF0906DD-EA0C-4CE1-9D1F-F8E35DEB049D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A06B719A-136F-4A36-925B-4339FAF601F5}
+	EndGlobalSection
+EndGlobal

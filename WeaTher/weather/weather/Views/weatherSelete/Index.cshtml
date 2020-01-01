@@ -1,0 +1,248 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Bootstrap/JS/jquery-3.4.1.js"></script>
+    <script src="~/Bootstrap/JS/bootstrap.js"></script>
+    <link href="~/Bootstrap/CSS/bootstrap.css" rel="stylesheet" />
+    <script src="~/JSCSS/jquery.tmpl.js"></script>
+    <script src="~/JSCSS/Echarts.js"></script>
+    @*<script src="~/layui/layui.js"></script>
+        <script src="~/layui/lay/modules/layer.js"></script>
+        <link href="~/layui/css/layui.css" rel="stylesheet" />*@
+</head>
+<body>
+    <div>
+        <input id="Text1" type="text" value="101180101" /><input id="Button1" type="button" value="button" />
+
+        <select id="Select1">
+            <option value="0">请选择</option>
+        </select>
+        <table id="tb" class="table">
+            <tr>
+                <th>编号</th>
+                <th>城市</th>
+                <th>天气类型</th>
+                <th>最高温度</th>
+                <th>最低温度</th>
+                <th>周期</th>
+                <th>风向</th>
+                <th>风力</th>
+                <th>空气质量</th>
+                <th>天气日期</th>
+            </tr>
+        </table>
+        <script id="sc" type="text/x-jquery-tmpl">
+            {{each Data}}
+            <tr>
+                <td>${forecast.date}</td>
+                <td>${cityInfo.city}</td>
+                <td>${forecast.type}</td>
+                <td>${forecast.high}</td>
+                <td>${forecast.low}</td>
+                <td>${forecast.week}</td>
+                <td>${forecast.fx}</td>
+                <td>${forecast.fl}</td>
+                <td>${data.quality}</td>
+                <td id="Borrow">${forecast.ymd}</td>
+            </tr>
+            {{/each}}
+        </script>
+        <div id="main" class="none" style="width: 50%; height: 400px; float: left; " class="col-md-8"></div>
+        <div id="main2" class="none" style="width: 50%; height: 400px; float: left; " class="col-md-8"></div>
+    </div>
+    <script>
+        $(function () {
+            Select1()
+            //添加或更新信息
+            $("#Button1").click(function () {
+                $.ajax({
+                    url: "/weatherSelete/insert",
+                    data: { url: $("#Text1").val() },
+                    success: function (data) {
+                        console.log(data);
+                        if (data != 0) {
+                            alert("更新/添加成功");
+                            Select1();
+                        }
+                    }
+                })
+            })
+            //城市选择
+            $("#Select1").change(function () {
+                var id = $("#Select1").val();
+                $.ajax({
+                    url: "/weatherSelete/cityweatherSelete",
+                    dataType: "json",
+                    data: { id: id },
+                    success: function (result) {
+                        console.log(result);
+                        $("#tb tr:gt(0)").remove();
+                        $("#sc").tmpl(result).appendTo("#tb");
+                        for (var i = 0; i < $("table tr").length; i++) {
+                            $("tr:eq(" + i + ") #Borrow").text(formatDate($("tr:eq(" + i + ") #Borrow").text()));
+                            //$("tr:eq(" + i + ") #Return").text(formatDate($("tr:eq(" + i + ") #Return").text()));
+                        }
+                    }
+                })
+            })
+            //渲染下拉框
+            function Select1() {
+                $.ajax({
+                    url: "/weatherSelete/cityList",
+                    dataType: "json",
+                    success: function (result) {
+                        console.log(result);
+                        $("#Select1 option:gt(0)").remove();
+                        for (var i = 0; i < result.length; i++) {
+                            var str = "  <option value=" + result[i].CityID + ">" + result[i].city + "</option>"
+                            $("#Select1").append(str);
+                        }
+                    }
+                })
+            }
+            //处理JSON 日期格式
+            function formatDate(val, formatType) {
+                if (val == undefined) {
+                    return '';
+                }
+                var reg = /^\/Date\(\d+\)\/$/;
+                if (!reg.test(val)) return '';//格式不正确 ，返回空
+                var strDate = val.substr(1, val.length - 2);
+                var obj = eval('(' + "{ date :new " + strDate + "}" + ')')
+                var date = obj.date;
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+                var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+                var datetime = year + '-' + month + '-' + day;
+
+
+                if (formatType == 'yyyy-MM-dd') {
+                    return datetime;
+                } else if (formatType == 'yyyy-MM-dd HH:mm:ss') {
+                    var hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+                    var minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+                    var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+                    return datetime + ' ' + hour + ':' + minute + ':' + seconds;
+                }
+                return datetime;
+            }
+            var myChart = echarts.init(document.getElementById('main'));
+            myChart1();
+            function myChart1() {
+                $.ajax({
+                    url: "/weatherSelete/echartWeather",
+                    dataType: "json",
+                    success: function (json) {
+                        myChart.setOption({
+                            title: {
+                                text: '未来七天天气类型统计(前七条)',
+                                //subtext: '纯属虚构',
+                                x: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left',
+                                data: json
+                            },
+                            series: 
+                                {
+                                    name: '天气类型',
+                                    type: 'pie',
+                                    radius: '55%',
+                                    center: ['50%', '60%'],
+                                    data: json
+                                }
+                            
+                        });
+                    }
+                })
+            }
+
+            myChart.on('click', function (param) {
+                //这里根据param填写你的跳转逻辑
+                console.log(param.name);
+                //渲染数据
+                $.ajax({
+                    url: "/weatherSelete/echartWeatherSelete",
+                    data: { name: param.name},
+                    dataType: "json",
+                    success: function (result) {
+                        $("#tb tr:gt(0)").remove();
+                        $("#sc").tmpl(result).appendTo("#tb");
+                        for (var i = 0; i < $("table tr").length; i++) {
+                            $("tr:eq(" + i + ") #Borrow").text(formatDate($("tr:eq(" + i + ") #Borrow").text()));
+                        }
+                    }
+                })
+            });
+
+            var myChart2 = echarts.init(document.getElementById('main2'));
+            myChartX2();
+            function myChartX2() {
+                $.ajax({
+                    url: "/weatherSelete/echartFX",
+                    dataType: "json",
+                    success: function (json) {
+                        myChart2.setOption({
+                            title: {
+                                text: '未来七天风向类型统计(前七条)',
+                                //subtext: '纯属虚构',
+                                x: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left',
+                                data: json
+                            },
+                            series:
+                            {
+                                name: '风向类型',
+                                type: 'pie',
+                                radius: '55%',
+                                center: ['50%', '60%'],
+                                data: json
+                            }
+
+                        });
+                    }
+                })
+            }
+
+            myChart2.on('click', function (param) {
+                //这里根据param填写你的跳转逻辑
+                console.log(param.name);
+                //渲染数据
+                $.ajax({
+                    url: "/weatherSelete/echartFXSelete",
+                    data: { name: param.name },
+                    dataType: "json",
+                    success: function (result) {
+                        console.log(result);
+                        $("#tb tr:gt(0)").remove();
+                        $("#sc").tmpl(result).appendTo("#tb");
+                        for (var i = 0; i < $("table tr").length; i++) {
+                            $("tr:eq(" + i + ") #Borrow").text(formatDate($("tr:eq(" + i + ") #Borrow").text()));
+                        }
+                    }
+                })
+            });
+        })
+    </script>
+</body>
+</html>

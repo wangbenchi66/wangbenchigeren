@@ -13,11 +13,11 @@ drop table cityInfo
 go
 create table cityInfo--城市信息
 (
-	cityInfoid int primary key identity(201,1),
+	CityID int primary key identity(1,1),
 	city nvarchar(20) not null,--城市
 	citykey nvarchar(30) not null,--城市天气代码
 	parent nvarchar(20) not null,--所属省份
-	updateTime datetime not null,--更新时间
+	updateTime nvarchar(100) not null,--更新时间
 	
 )
 if exists(select * from sys.tables where name='cityweather')
@@ -25,14 +25,14 @@ drop table cityweather
 go
 create table cityweather
 (
-	cityweatherid int primary key identity(101,1),
+	ID int primary key identity(1,1),
 	shidu nvarchar(20) not null,--湿度
-	pm25 int not null,--PM2.5
-	pm10 int not null,--PM1.0
+	pm25 float not null,--PM2.5
+	pm10 float not null,--PM1.0
 	quality nvarchar(50) not null,--空气质量
 	wendu nvarchar(50) not null,--温度
 	ganmao  nvarchar(200),--备注
-	cityInfoid int references cityInfo(cityInfoid)
+	CityID int references cityInfo(CityID)
 
 )
 
@@ -41,7 +41,7 @@ if exists(select * from sys.tables where name='forecast')
 drop table forecast
 create table forecast --具体信息
 (
-	forecastid int identity(1,1),
+	FID int primary key identity(1,1),
 	date nvarchar(20) not null,--日期（日）
 	high nvarchar(30) not null,--高温
 	low nvarchar(30) not null,--低温
@@ -54,7 +54,7 @@ create table forecast --具体信息
 	fl  nvarchar(30) not null,--风力
 	type  nvarchar(10) not null,--天气类型（晴）
 	notice nvarchar(200),--备注
-	cityweatherid int references cityweather(cityweatherid)
+	ID int references cityweather(ID)
 )
 
 
@@ -62,6 +62,17 @@ create table forecast --具体信息
 select * from forecast
 select * from cityweather
 select * from cityInfo
+
+--delete forecast delete cityweather delete cityInfo
+--天气类型
+select  f.type name,COUNT(f.type) value from forecast f  group by f.type
+--风向
+select  f.fx name,COUNT(f.fx) value from forecast f  group by f.fx
+
+SELECT   forecast.type,COUNT(forecast.type) data
+FROM      dbo.cityInfo INNER JOIN
+                dbo.cityweather ON dbo.cityInfo.CityID = dbo.cityweather.CityID INNER JOIN
+                dbo.forecast ON dbo.cityweather.ID = dbo.forecast.ID group by type
 
 --if exists(select * from sys.tables where name='WeatherInfo')
 --drop table WeatherInfo
