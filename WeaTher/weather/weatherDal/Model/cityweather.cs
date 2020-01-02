@@ -44,5 +44,7 @@ namespace weatherDal.Model
         //public virtual ICollection<forecast> forecast { get; set; }
         [NotMapped]
         public forecast yesterday { get; set; }
+        [NotMapped]
+        public virtual ICollection<forecast> forecast { get; set; }
     }
 }

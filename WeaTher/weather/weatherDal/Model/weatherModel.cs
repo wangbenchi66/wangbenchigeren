@@ -10,6 +10,7 @@ namespace weatherDal.Model
         public weatherModel()
             : base("name=weather")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<cityInfo> cityInfo { get; set; }

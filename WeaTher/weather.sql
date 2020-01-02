@@ -63,7 +63,7 @@ select * from forecast
 select * from cityweather
 select * from cityInfo
 
---delete forecast delete cityweather delete cityInfo
+--	delete forecast delete cityweather delete cityInfo
 --天气类型
 select  f.type name,COUNT(f.type) value from forecast f  group by f.type
 --风向
@@ -87,7 +87,7 @@ FROM      dbo.cityInfo INNER JOIN
 --	dataid int references cityweather(cityweatherid),
 --)
 
-
+select  f.fx name,COUNT(f.fx) value from forecast f  group by f.fx
 
 
 

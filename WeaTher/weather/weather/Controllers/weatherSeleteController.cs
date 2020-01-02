@@ -29,6 +29,7 @@ namespace weather.Controllers
             data.data.CityID = cityInfo;
             //添加城市天气
             var cityw = weatherDAL.cityweatherInsert(data.data);
+            var cityw2 = weatherDAL.cityweatherInsert2(data.data.forecast, data.data.ID);
             //JsonResult json = new JsonResult();
             //json.Data = new { Data = cityw, list = cityInfo };
             return Json(cityw, JsonRequestBehavior.AllowGet);
@@ -49,7 +50,7 @@ namespace weather.Controllers
         /// <returns></returns>
         public JsonResult cityweatherSelete(int id)
         {
-            var cityw =new { Data = weatherDAL.cityweatherSelete(id) };
+            var cityw = new { Data = weatherDAL.cityweatherSelete(id) };
             return Json(cityw, JsonRequestBehavior.AllowGet);
         }
 
@@ -59,7 +60,7 @@ namespace weather.Controllers
         /// <returns></returns>
         public JsonResult echartWeather()
         {
-            var list = weatherDAL.echartWeather() ;
+            var list = weatherDAL.echartWeather();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 

@@ -33,6 +33,24 @@ namespace weatherDal
         {
             weatherModel db = new weatherModel();
             db.cityweather.Add(cityweather);
+            //db.forecast.Add(cityweather.yesterday);
+            return db.SaveChanges();
+           
+        }
+        /// <summary>
+        /// 添加十五天的天气信息
+        /// </summary>
+        /// <param name="cityweather"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int cityweatherInsert2(ICollection<forecast> cityweather,int id)
+        {
+            weatherModel db = new weatherModel();
+            foreach (var item in cityweather)
+            {
+                item.ID = id;
+                db.forecast.Add(item);
+            }
             return db.SaveChanges();
         }
         /// <summary>
@@ -67,7 +85,7 @@ namespace weatherDal
                                     join b in db.forecast on c.ID equals b.ID
                                     join q in db.cityInfo on c.CityID equals q.CityID
                                     select new weatherDB { forecast = b, data = c, cityInfo = q })
-                                    .Where(a => a.data.CityID == id).Take(7).ToList();
+                                    .Where(a => a.cityInfo.CityID == id).Take(7).ToList();
             return city;
         }
         /// <summary>

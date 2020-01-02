@@ -19,15 +19,25 @@ namespace weather.Tests
             data.data.CityID = cityInfo;
             //添加城市天气
             var cityw = weatherDAL.cityweatherInsert(data.data);
+            //添加天气信息
+            var forecast = weatherDAL.cityweatherInsert2(data.data.forecast, data.data.ID);
+
 
         }
         [TestMethod]
         public void TestMethod2()
         {
-            //var cityw = weatherDAL.cityweatherSelete(6);
-            //var  city = weatherDAL.cityInfoSelete();
+            var cityw = weatherDAL.cityweatherSelete(34);
+            var city = weatherDAL.cityInfoSelete();
             //var city = weatherDAL.echartWeather();
-            var cityw = weatherDAL.cityweatherSeleteList();
+            //var cityw = weatherDAL.cityweatherSeleteList();
+        }
+
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            //var 
         }
     }
 }
