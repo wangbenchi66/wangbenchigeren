@@ -37,6 +37,7 @@
                 <th>风力</th>
                 <th>空气质量</th>
                 <th>天气日期</th>
+                <th>数据更新时间</th>
             </tr>
         </table>
         <script id="sc" type="text/x-jquery-tmpl">
@@ -52,6 +53,7 @@
                 <td>${forecast.fl}</td>
                 <td>${data.quality}</td>
                 <td id="Borrow">${forecast.ymd}</td>
+                <td>${cityInfo.updateTime}</td>
             </tr>
             {{/each}}
         </script>

@@ -13,4 +13,3 @@ E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\
 E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.csproj.CopyComplete
 E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.dll
 E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.pdb
-E:\实训\项目\个人git\wangbenchigeren\WeaTher\weather\weatherDal\obj\Debug\weatherDal.csprojAssemblyReference.cache

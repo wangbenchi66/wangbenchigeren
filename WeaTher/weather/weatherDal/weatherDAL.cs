@@ -106,8 +106,16 @@ namespace weatherDal
         public static List<EchartModel> echartWeather()
         {
             weatherModel db = new weatherModel();
-            string sql = @"select COUNT(f.type) value,f.type name from forecast f  group by f.type";
-            List<EchartModel> list = db.Database.SqlQuery<EchartModel>(sql).ToList();
+            //string sql = @"select COUNT(f.type) value,f.type name from forecast f  group by f.type";
+            //List<EchartModel> list = db.Database.SqlQuery<EchartModel>(sql).ToList();
+            List<EchartModel> list = (from f in db.forecast
+                                      group f by f.type into g
+                                      from a in g
+                                      select new EchartModel
+                                      {
+                                          name = a.type,
+                                          value = g.Count(p => p.type == a.type)
+                                      }).Distinct().ToList();
             return list;
         }
 
@@ -133,8 +141,16 @@ namespace weatherDal
         public static List<EchartModel> echartFX()
         {
             weatherModel db = new weatherModel();
-            string sql = @"select  f.fx name,COUNT(f.fx) value from forecast f  group by f.fx";
-            List<EchartModel> list = db.Database.SqlQuery<EchartModel>(sql).ToList();
+            //string sql = @"select  f.fx name,COUNT(f.fx) value from forecast f  group by f.fx";
+            //List<EchartModel> list = db.Database.SqlQuery<EchartModel>(sql).ToList();
+            List<EchartModel> list = (from f in db.forecast
+                                      group f by f.fx into g
+                                      from a in g
+                                      select new EchartModel
+                                      {
+                                          name = a.fx,
+                                          value = g.Count(p => p.fx == a.fx)
+                                      }).Distinct().ToList();
             return list;
         }
         /// <summary>
