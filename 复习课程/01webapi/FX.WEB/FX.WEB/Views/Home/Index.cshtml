@@ -1,0 +1,189 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/jscss/jquery.tmpl.js"></script>
+    <link href="~/jscss/bootstrap.css" rel="stylesheet" />
+    <script src="~/jscss/layui.js"></script>
+</head>
+<body>
+    <div>
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="ins"> 添加</button>
+        <table id="tb" class="table">
+
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>编辑</th>
+            </tr>
+
+        </table>
+        <script id="sc" type="text/x-jquery-tmpl">
+            {{each Data}}
+            <tr>
+                <td>${Id}</td>
+                <td>${Name}</td>
+                <td>${Sex}</td>
+                <td>
+                    <a id="delete" Cid="${Id}">删除</a>
+                    <a id="up" Cid="${Id}" Cname="${Name}" CSex="${Sex}" data-toggle="modal" data-target="#myModa2">修改</a>
+                </td>
+            </tr>
+            {{/each}}
+        </script>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加信息</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="男" checked> 男
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="女">女
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="insert">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">修改信息</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="Cid2" >
+                    <input type="text" class="form-control" id="name2" placeholder="请输入名称">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios12" value="男" checked> 男
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios22" value="女">女
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="update">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <script>
+        $(function () {
+            select();
+            function select() {
+                $.ajax({
+                    url: "http://localhost:60817/api/Student/select",
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        $("#tb tr:gt(0)").remove();
+                        $("#sc").tmpl(data).appendTo("#tb");
+                    }
+                })
+            }
+            //删除
+            $("#tb").on("click", "#delete", function () {
+                var id = $(this).attr("Cid");
+                $.ajax({
+                    url: "http://localhost:60817/api/Student/Delete?id=" + id,
+                    type: "post",
+                    dataType: "json",
+                    success: function (json) {
+                        if (json > 0) {
+                            alert("删除成功");
+                            select();
+                        }
+                    }
+                })
+            })
+            //添加
+            $("#insert").click(function () {
+                var arr = new Array(2);
+                arr[0] = $("#name").val();
+                $("input[type=radio]:checked").each(function () {
+                    arr[1] = $(this).val();
+                })
+                $.ajax({
+                    url: "http://localhost:60817/api/Student/StuInsert",
+                    type: "post",
+                    dataType: "json",
+                    data: { name: arr[0], sex: arr[1] },
+                    success: function (json) {
+                        if (json > 0) {
+                            alert("添加成功");
+                            $('#myModal').modal('hide');
+                            select();
+                        }
+                    }
+                })
+            })
+            //修改
+            $("#tb").on("click", "#up", function () {
+                $("#Cid2").val($(this).attr("Cid"));
+                $("#name2").val($(this).attr("CName"));
+                var sex = $(this).attr("CSex");
+                if (sex == "男") {
+                    $("#optionsRadios12").prop("checked", true);
+                } else {
+                    $("#optionsRadios22").prop("checked", true);
+                }
+            })
+
+            $("#update").click(function () {
+                var sex;
+                $("input[type=radio]:checked").each(function () {
+                    sex = $(this).val();
+                })
+                var name = $("#name2").val();
+                var Cid = $("#Cid2").val();
+                $.ajax({
+                    url: "http://localhost:60817/api/Student/StuUpdate",
+                    type: "post",
+                    dataType: "json",
+                    data: { name: name, sex: sex, Cid: Cid },
+                    success: function (json) {
+                        if (json > 0) {
+                            alert("修改成功");
+                            $('#myModa2').modal('hide');
+                            select();
+                        }
+                    }, error: function () {
+                        alert("错误");
+                    }
+                    
+                })
+            })
+        })
+    </script>
+
+</body>
+</html>

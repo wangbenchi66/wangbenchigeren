@@ -53,7 +53,7 @@ namespace Oracle.Controllers
                 using (OracleConnection conn = DapperFactory.CrateOracleConnection())
                 {
                     stuinfo.AddTime = DateTime.Now;
-                    if (conn.Execute(sql, stuinfo) > 0)
+                    if (conn.Execute(sql,stuinfo) > 0)
                     {
                         return RedirectToAction("Index");
                     }

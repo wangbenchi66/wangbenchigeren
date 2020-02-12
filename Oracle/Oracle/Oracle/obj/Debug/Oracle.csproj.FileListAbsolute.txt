@@ -75,3 +75,4 @@ E:\实训\项目\个人git\wangbenchigeren\Oracle\Oracle\Oracle\obj\Debug\Oracle
 E:\实训\项目\个人git\wangbenchigeren\Oracle\Oracle\Oracle\obj\Debug\Oracle.csproj.CopyComplete
 E:\实训\项目\个人git\wangbenchigeren\Oracle\Oracle\Oracle\obj\Debug\Oracle.dll
 E:\实训\项目\个人git\wangbenchigeren\Oracle\Oracle\Oracle\obj\Debug\Oracle.pdb
+E:\实训\项目\个人git\wangbenchigeren\Oracle\Oracle\Oracle\obj\Debug\Oracle.csprojAssemblyReference.cache
