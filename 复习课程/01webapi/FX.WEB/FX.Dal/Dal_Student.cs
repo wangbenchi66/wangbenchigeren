@@ -16,7 +16,8 @@ namespace FX.Dal
         /// <returns></returns>
         public static List<Student> studentsList()
         {
-            var list = (from stu in db.Student select stu).ToList();
+            Model1 model = new Model1();
+            var list = (from stu in model.Student select stu).ToList();
             return list;
         }
         /// <summary>
@@ -49,9 +50,17 @@ namespace FX.Dal
         {
             //db.Entry(student).State = System.Data.Entity.EntityState.Modified;
             //return db.SaveChanges();
-            string sql = string.Format(@"update Student set Name='{0}',Sex='{1}' where Id={2}", student.Name, student.Sex, student.Id);
-            int result = (int)db.Database.ExecuteSqlCommand(sql);
-            return result;
+            Model1 model = new Model1();
+            //string sql = string.Format(@"update Student set Name='{0}',Sex='{1}' where Id={2}", student.Name, student.Sex, student.Id);
+            //int result = (int)model.Database.ExecuteSqlCommand(sql);
+            //return result;
+            Student stu = model.Student.Single(p => p.Id == student.Id);
+            if (stu!=null)
+            {
+                stu.Name = student.Name;
+                stu.Sex = student.Sex;
+            }
+            return model.SaveChanges();
         }
     }
 }
