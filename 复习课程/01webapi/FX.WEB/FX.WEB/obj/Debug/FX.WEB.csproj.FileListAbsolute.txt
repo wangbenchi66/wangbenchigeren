@@ -169,3 +169,4 @@ E:\实训\项目\个人git\wangbenchigeren\复习课程\01webapi\FX.WEB\FX.WEB\o
 E:\实训\项目\个人git\wangbenchigeren\复习课程\01webapi\FX.WEB\FX.WEB\obj\Debug\FX.WEB.csproj.CopyComplete
 E:\实训\项目\个人git\wangbenchigeren\复习课程\01webapi\FX.WEB\FX.WEB\obj\Debug\FX.WEB.dll
 E:\实训\项目\个人git\wangbenchigeren\复习课程\01webapi\FX.WEB\FX.WEB\obj\Debug\FX.WEB.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\01webapi\FX.WEB\FX.WEB\obj\Debug\FX.WEB.csprojAssemblyReference.cache
