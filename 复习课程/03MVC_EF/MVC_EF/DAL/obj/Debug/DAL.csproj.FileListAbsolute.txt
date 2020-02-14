@@ -1,0 +1,12 @@
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\DAL.dll.config
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\DAL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\DAL.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\EntityFramework.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\EntityFramework.xml
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\obj\Debug\DAL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\03MVC_EF\MVC_EF\DAL\obj\Debug\DAL.pdb
