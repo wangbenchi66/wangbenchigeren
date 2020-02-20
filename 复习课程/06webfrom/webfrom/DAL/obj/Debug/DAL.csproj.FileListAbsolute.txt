@@ -1,0 +1,9 @@
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\bin\Debug\DAL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\bin\Debug\DAL.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\bin\Debug\MODEL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\bin\Debug\MODEL.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\obj\Debug\DAL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\DAL\obj\Debug\DAL.pdb

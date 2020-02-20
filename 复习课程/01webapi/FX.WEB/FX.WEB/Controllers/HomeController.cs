@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FX.Dal;
+using FX.Dal.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,14 @@ namespace FX.WEB.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public JsonResult select(string name = "")
+        {
+            List<Student> list = Dal_Student.studentsList(name);
+            JsonResult json = new JsonResult();
+            json.Data = new { Data = list };
+            return json;
         }
     }
 }

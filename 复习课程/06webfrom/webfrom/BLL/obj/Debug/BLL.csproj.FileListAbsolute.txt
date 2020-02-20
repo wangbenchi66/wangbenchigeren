@@ -1,0 +1,11 @@
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\bin\Debug\BLL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\bin\Debug\BLL.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\bin\Debug\DAL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\bin\Debug\MODEL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\bin\Debug\DAL.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\bin\Debug\MODEL.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\obj\Debug\BLL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\BLL\obj\Debug\BLL.pdb

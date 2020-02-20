@@ -14,9 +14,9 @@ namespace FX.webApi.Controllers
     public class StudentController : ApiController
     {
         [HttpGet]
-        public object select()
+        public object select(string name="")
         {
-            var list = new { Data = Dal_Student.studentsList() };
+            var list = new { Data = Dal_Student.studentsList(name) };
             return list;
         }
         /// <summary>

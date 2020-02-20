@@ -14,11 +14,12 @@ namespace FX.Dal
         /// 查询
         /// </summary>
         /// <returns></returns>
-        public static List<Student> studentsList()
+        public static List<Student> studentsList(string name = "")
         {
             Model1 model = new Model1();
-            var list = (from stu in model.Student select stu).ToList();
+            var list = (from stu in model.Student select stu).Where(p => p.Name.Contains(name)).ToList();
             return list;
+
         }
         /// <summary>
         /// 删除
@@ -55,7 +56,7 @@ namespace FX.Dal
             //int result = (int)model.Database.ExecuteSqlCommand(sql);
             //return result;
             Student stu = model.Student.Single(p => p.Id == student.Id);
-            if (stu!=null)
+            if (stu != null)
             {
                 stu.Name = student.Name;
                 stu.Sex = student.Sex;

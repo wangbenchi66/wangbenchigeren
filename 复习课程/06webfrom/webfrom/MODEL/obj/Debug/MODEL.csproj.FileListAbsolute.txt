@@ -1,0 +1,5 @@
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\MODEL\bin\Debug\MODEL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\MODEL\bin\Debug\MODEL.pdb
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\MODEL\obj\Debug\MODEL.csproj.CoreCompileInputs.cache
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\MODEL\obj\Debug\MODEL.dll
+E:\实训\项目\个人git\wangbenchigeren\复习课程\06webfrom\webfrom\MODEL\obj\Debug\MODEL.pdb
